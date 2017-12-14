@@ -13,6 +13,9 @@ const outputPath = `${tempDirPath}/dist`
 const mkdirAsync = promisify(fs.mkdir)
 const writeFileAsync = promisify(fs.writeFile)
 const readFileAsync = promisify(fs.readFile)
+const unlinkAsync = promisify(fs.unlink)
+
+const componentCache = {}
 
 const baseWebpackConfig = {
   output: {
@@ -35,7 +38,6 @@ const baseWebpackConfig = {
   }
 }
 
-
 function generatePage (script) {
   return `
     <!DOCTYPE html>
@@ -48,19 +50,11 @@ function generatePage (script) {
   `
 }
 
-function generateScript (componentPath, input) {
-  return `
-    const component = require('${componentPath}')
-    window.component = component.renderSync(${JSON.stringify(input)})
-      .appendTo(document.body)
-      .getComponent()
-  `
+function generateScript (componentPath) {
+  return `window.template = require('${componentPath}')`
 }
 
-async function mount (componentPath, input) {
-  const tempInputPath = `${tempDirPath}/${getRandomFileName()}.js`
-  const tempOutputFile = `${getRandomFileName()}.js`
-
+async function mkdir () {
   try {
     await mkdirAsync(tempDirPath)
   } catch (err) {
@@ -68,13 +62,14 @@ async function mount (componentPath, input) {
       throw err
     }
   }
+}
 
-  const script = generateScript(componentPath, input)
-  await writeFileAsync(tempInputPath, script)
+function compile (inputPath) {
+  const tempOutputFile = `${getRandomFileName()}.js`
 
   const config = {
     ...baseWebpackConfig,
-    entry: tempInputPath
+    entry: inputPath
   }
 
   config.output.filename = tempOutputFile
@@ -82,43 +77,72 @@ async function mount (componentPath, input) {
   const compiler = webpack(config)
 
   return new Promise((resolve, reject) => {
-    compiler.run(async (err, stats) => {
-      if (err) {
-        return reject(err)
-      }
-
-      const tempOutputPath = path.join(outputPath, tempOutputFile)
+    compiler.run(async (err) => {
+      let tempOutputPath
 
       try {
-        const outputScript = await readFileAsync(tempOutputPath, 'utf8')
-        const page = generatePage(outputScript)
-
-        const dom = new JSDOM(page, { runScripts: 'dangerously' })
-
-        const { window } = dom
-        const { document, component } = window
-
-        function clean () {
-          window.close()
+        if (err) {
+          return reject(err)
         }
 
-        component.once('destroy', clean)
+        tempOutputPath = path.join(outputPath, tempOutputFile)
+        const outputScript = await readFileAsync(tempOutputPath, 'utf8')
 
-        resolve({
-          dom,
-          clean,
-          window,
-          document,
-          component
-        })
+        resolve(outputScript)
       } catch (err) {
         reject(err)
       } finally {
-        fs.unlinkSync(tempInputPath)
-        fs.unlinkSync(tempOutputPath)
+        await unlinkAsync(tempOutputPath)
       }
     })
   })
+}
+
+async function mount (componentPath, input) {
+  let tempInputPath
+  let outputScript
+
+  try {
+    if (componentCache[componentPath]) {
+      outputScript = componentCache[componentPath]
+    } else {
+      tempInputPath = `${tempDirPath}/${getRandomFileName()}.js`
+
+      const script = generateScript(componentPath)
+      await writeFileAsync(tempInputPath, script)
+
+      outputScript = await compile(tempInputPath)
+      componentCache[componentPath] = outputScript
+    }
+
+    const page = generatePage(outputScript)
+    const dom = new JSDOM(page, { runScripts: 'dangerously' })
+
+    const { window } = dom
+    const { document, template } = window
+
+    const component = template.renderSync(input)
+      .appendTo(document.body)
+      .getComponent()
+
+    function clean () {
+      window.close()
+    }
+
+    component.once('destroy', clean)
+
+    return {
+      dom,
+      clean,
+      window,
+      document,
+      component
+    }
+  } finally {
+    if (tempInputPath) {
+      await unlinkAsync(tempInputPath)
+    }
+  }
 }
 
 module.exports = mount

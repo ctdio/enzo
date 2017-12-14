@@ -7,13 +7,14 @@ const componentPath = require.resolve('./fixtures/test-component-a/index.marko')
 test('should create an interactable component', async (t) => {
   t.plan(2)
 
-  const { component } = await mount(componentPath)
+  const { clean, component } = await mount(componentPath)
 
   t.is(component.state.selected, undefined)
 
   component.handleClick()
 
   t.true(component.state.selected)
+  clean()
 })
 
 test('should allow input to be passed in', async (t) => {
@@ -21,9 +22,11 @@ test('should allow input to be passed in', async (t) => {
 
   const input = { selected: true }
 
-  const { component } = await mount(componentPath, input)
+  const { clean, component } = await mount(componentPath, input)
 
-  t.true(component.state.selected)
+  const { selected } = component.state
+
+  t.true(selected)
 })
 
 test('should call #window.close after clean is invoked', async (t) => {
