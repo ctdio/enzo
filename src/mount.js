@@ -4,7 +4,6 @@ const { promisify } = require('util')
 
 const { JSDOM } = require('jsdom')
 const webpack = require('webpack')
-const markoCompiler = require('marko/compiler')
 const getRandomFileName = require('./util/getRandomFileName')
 
 const tempDirPath = `${process.cwd()}/.enzo`
@@ -54,7 +53,7 @@ function generateScript (componentPath) {
   return `window.template = require('${componentPath}')`
 }
 
-async function mkdir () {
+async function createWorkDir () {
   try {
     await mkdirAsync(tempDirPath)
   } catch (err) {
@@ -102,6 +101,8 @@ async function mount (componentPath, input) {
   let tempInputPath
   let outputScript
 
+  await createWorkDir()
+
   try {
     if (componentCache[componentPath]) {
       outputScript = componentCache[componentPath]
@@ -125,11 +126,8 @@ async function mount (componentPath, input) {
       .appendTo(document.body)
       .getComponent()
 
-    function clean () {
-      window.close()
-    }
-
-    component.once('destroy', clean)
+    const clean = () => window.close()
+    component.once('destroy', () => setImmediate(clean))
 
     return {
       dom,
