@@ -106,8 +106,9 @@ together to run it in a browser environment using
 bundle is then passed to a `jsdom` instance and rendered.
 Each call to `mount` returns a new component that has been
 sandboxed in it's own `jsdom` instance, so you won't have to
-worry about conflicts messy conflicts. This also means that the `jsdom`
-`document` object is _not_ stuffed into the Node globals
+worry about messy conflicts when running tests in parallel.
+This also means that the `jsdom` `document` object is
+_not_ stuffed into the Node globals
 (see this [wiki page](https://github.com/tmpvar/jsdom/wiki/Don%27t-stuff-jsdom-globals-onto-the-Node-global)).
 
 ## Why `webpack` and not `<insert bundler here>`?
