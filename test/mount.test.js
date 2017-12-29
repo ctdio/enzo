@@ -1,6 +1,7 @@
 const test = require('ava')
 const sinon = require('sinon')
 const mount = require('../src/mount')
+const proxyquire = require('proxyquire')
 
 const componentPath = require.resolve('./fixtures/test-component-a/index.marko')
 
@@ -31,6 +32,8 @@ test('should allow input to be passed in', async (t) => {
 })
 
 test('should call #window.close after clean is invoked', async (t) => {
+  t.plan(1)
+
   const { window, clean } = await mount(componentPath)
   const spy = sinon.spy(window, 'close')
 
@@ -39,4 +42,30 @@ test('should call #window.close after clean is invoked', async (t) => {
   t.notThrows(() => {
     sinon.assert.calledOnce(spy)
   })
+})
+
+test('should reject on compile error', async (t) => {
+  t.plan(1)
+
+  const componentPath =
+    require.resolve('./fixtures/bad-component/index.marko')
+
+  await t.throws(mount(componentPath))
+})
+
+test('should reject on compile error', async (t) => {
+  t.plan(2)
+
+  const compileError = new Error('Compile error')
+
+  const mount = proxyquire('../src/mount', {
+    webpack: () => ({
+      run: sinon.stub().callsFake((callback) => {
+        callback(compileError)
+      })
+    })
+  })
+
+  const error = await t.throws(mount(componentPath))
+  t.is(error.message, compileError.message)
 })

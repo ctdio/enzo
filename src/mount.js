@@ -81,7 +81,7 @@ function compile (inputPath) {
 
       try {
         if (err) {
-          return reject(err)
+          throw err
         }
 
         tempOutputPath = path.join(outputPath, tempOutputFile)
@@ -91,7 +91,9 @@ function compile (inputPath) {
       } catch (err) {
         reject(err)
       } finally {
-        await unlinkAsync(tempOutputPath)
+        if (tempOutputPath) {
+          await unlinkAsync(tempOutputPath)
+        }
       }
     })
   })
