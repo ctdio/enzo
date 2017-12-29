@@ -3268,9 +3268,9 @@ marko-loader@^1.3.2:
   dependencies:
     loader-utils "^1.0.3"
 
-marko@^4.7.1:
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/marko/-/marko-4.7.1.tgz#e00648f95f278ec76073bc3d70d0ffdfc786e0ce"
+marko@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/marko/-/marko-4.7.4.tgz#7f6ed200cb0934dc6bd8b345093d91846dd13133"
   dependencies:
     app-module-path "^2.2.0"
     argly "^1.0.0"
