@@ -69,3 +69,37 @@ test('should reject on compile error', async (t) => {
   const error = await t.throws(mount(componentPath))
   t.is(error.message, compileError.message)
 })
+
+test('should reject if unable to create a work directory', async (t) => {
+  t.plan(2)
+
+  const mkdirError = new Error('Error creating directory')
+
+  const mount = proxyquire('../src/mount', {
+    fs: {
+      mkdir: (input, callback) => callback(mkdirError)
+    }
+  })
+
+  const error = await t.throws(mount(componentPath))
+  t.is(error.message, mkdirError.message)
+})
+
+test.serial('should pull component code from cache after first mount', async (t) => {
+  t.plan(1)
+
+  const fs = require('fs')
+  const writeFileSpy = sinon.spy(fs, 'writeFile')
+  const mount = proxyquire('../src/mount', { fs })
+
+  await mount(componentPath)
+
+  const { callCount } = writeFileSpy
+
+  await mount(componentPath)
+
+  t.is(callCount, writeFileSpy.callCount,
+    'call count should be the same after second mount')
+
+  writeFileSpy.restore()
+})
