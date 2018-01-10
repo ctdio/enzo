@@ -1,3 +1,5 @@
+require('babel-polyfill')
+
 const fs = require('fs')
 const path = require('path')
 const promisify = require('pify')

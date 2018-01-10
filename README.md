@@ -1,5 +1,8 @@
 # enzo
 
+[![Build Status](https://travis-ci.org/charlieduong94/enzo.svg?branch=travis)](https://travis-ci.org/charlieduong94/enzo)
+[![Coverage Status](https://coveralls.io/repos/github/charlieduong94/enzo/badge.svg?branch=master)](https://coveralls.io/github/charlieduong94/enzo?branch=master)
+
 Small testing library for [marko](https://github.com/markojs/marko)
 that allows you to test components using any testing framework.
 
