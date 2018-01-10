@@ -1,6 +1,6 @@
 {
   "name": "enzo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Testing tools for marko",
   "main": "./lib/index.js",
   "repository": "https://github.com/charlieduong94/enzo",
