@@ -11,7 +11,8 @@
     "pretest": "yarn lint",
     "transpile": "babel src --out-dir lib",
     "test": "nyc ava",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepack": "yarn transpile"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
