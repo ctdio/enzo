@@ -1,5 +1,7 @@
 # enzo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/charlieduong94/enzo.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/charlieduong94/enzo.svg?branch=travis)](https://travis-ci.org/charlieduong94/enzo)
 [![Coverage Status](https://coveralls.io/repos/github/charlieduong94/enzo/badge.svg?branch=master)](https://coveralls.io/github/charlieduong94/enzo?branch=master)
 
