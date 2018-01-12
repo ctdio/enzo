@@ -1,7 +1,15 @@
 language: node_js
 node_js:
-    - "8"
-    - "7"
-    - "6"
-script: "yarn test"
-after_success: "yarn coverage"
+- '8'
+- '7'
+- '6'
+
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+script: yarn test
+after_script: greenkeeper-lockfile-upload
+after_success: yarn coverage
+
+env:
+  global:
+    secure: DiFjSnLv8idQaPAsHYYyM2SzflDrb8OSxoUgoOAjJXZxrhOumOjbmcty2wfMmNJu0LJezHuZbsLQNstA/v+8Fdfm3G+XnzaFsH23dBXrH44CRbejD47QTOwIpyfR255lw6Juy0JmNn2HbbuWcfXjmmJdXZPuMFareGQyRoFJ2On//x3oSSzUbQspprAoj7IBJp6qtub3y5i0h0DPT6y/nKseeKQV3TujVfIg5T5DM4RBzEsO5QvvfmWDppFpnqGybgFjIBAsZ3FDvKNSKfv4X7Y2qcpX9o1M+CKK7eXfKHOxEUrpUuxC+LaqRbg5PhiWZJHmzQzA+XaMyjCGxFRfv3viQ6aknNgzH+4adfZk2IdZptLoygSZ8yektvdBc+1oCLOi990w8nu1mxGtlDmjBYD/PyOTga1Q3l+DDmiA31DLiWD/vHCk2Z8WwmKl0monFuHnAhccgYZ3XkZC2vmwuRgd6goGgGeEjPhn7M2x+L6bwNutR1RQFHumL7YB/2oCajwzvt6RvZHHgd4zqdIHHErinV4wwH6DzW2bMiC9ZU1+uSJRMJ8WlFX9VjKJBgjnk4ZC/l2zdUDBC/NoSn0bz1AI65yfMmhwdcsoQMoyMiuYhWpoKXebaKX5SSNnwTiIs/rv66Q9aGjlsErN+FfHQ2ony9TqoBPB8fsjl+yr5w4=
