@@ -33,7 +33,7 @@
     "coveralls": "^3.0.0",
     "marko": "^4.7.4",
     "nyc": "^11.3.0",
-    "proxyquire": "^1.8.0",
+    "proxyquire": "^2.0.0",
     "snazzy": "^7.0.0",
     "standard": "^11.0.0"
   },
