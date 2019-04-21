@@ -100,9 +100,14 @@ acorn@^5.4.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.4.1.tgz#fdc58d9d17f4a4e98d102ded826a9b9759125102"
 
-acorn@^6.0.1, acorn@^6.0.2:
+acorn@^6.0.1:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.2.tgz#6a459041c320ab17592c6317abbfdf4bbaa98ca4"
+
+acorn@^6.0.4:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
+  integrity sha512-jPTiwtOxaHNaAPg/dmrJ/beuzLRnXtB0kQPQ8JpotKJgTB6rX6c8mlf315941pyjBSaPg8NHXS9fhP4u17DpGA==
 
 ajv-keywords@^2.0.0, ajv-keywords@^2.1.0:
   version "2.1.1"
@@ -1760,12 +1765,13 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-data-urls@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/data-urls/-/data-urls-1.0.1.tgz#d416ac3896918f29ca84d81085bc3705834da579"
+data-urls@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/data-urls/-/data-urls-1.1.0.tgz#15ee0582baa5e22bb59c77140da8f9c76963bbfe"
+  integrity sha512-YTWYI9se1P55u58gL5GkQHW4P6VJBJ5iBT+B5a7i2Tjadhv52paJG0qHX4A0OR6/t52odI64KP2YvFpkDOi3eQ==
   dependencies:
     abab "^2.0.0"
-    whatwg-mimetype "^2.1.0"
+    whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
 date-now@^0.1.4:
@@ -3345,34 +3351,36 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
-jsdom@^12.2.0:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-12.2.0.tgz#7cf3f5b5eafd47f8f09ca52315d367ff6e95de23"
+jsdom@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-14.1.0.tgz#916463b6094956b0a6c1782c94e380cd30e1981b"
+  integrity sha512-O901mfJSuTdwU2w3Sn+74T+RnDVP+FuV5fH8tcPWyqrseRAb0s5xOtPgCFiPOtLcyK7CLIJwPyD83ZqQWvA5ng==
   dependencies:
     abab "^2.0.0"
-    acorn "^6.0.2"
+    acorn "^6.0.4"
     acorn-globals "^4.3.0"
     array-equal "^1.0.0"
     cssom "^0.3.4"
     cssstyle "^1.1.1"
-    data-urls "^1.0.1"
+    data-urls "^1.1.0"
     domexception "^1.0.1"
     escodegen "^1.11.0"
     html-encoding-sniffer "^1.0.2"
-    nwsapi "^2.0.9"
+    nwsapi "^2.1.3"
     parse5 "5.1.0"
     pn "^1.1.0"
     request "^2.88.0"
     request-promise-native "^1.0.5"
-    saxes "^3.1.3"
+    saxes "^3.1.9"
     symbol-tree "^3.2.2"
-    tough-cookie "^2.4.3"
+    tough-cookie "^2.5.0"
     w3c-hr-time "^1.0.1"
+    w3c-xmlserializer "^1.1.2"
     webidl-conversions "^4.0.2"
     whatwg-encoding "^1.0.5"
-    whatwg-mimetype "^2.2.0"
+    whatwg-mimetype "^2.3.0"
     whatwg-url "^7.0.0"
-    ws "^6.1.0"
+    ws "^6.1.2"
     xml-name-validator "^3.0.0"
 
 jsesc@^1.3.0:
@@ -4002,9 +4010,10 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nwsapi@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.0.9.tgz#77ac0cdfdcad52b6a1151a84e73254edc33ed016"
+nwsapi@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.1.3.tgz#25f3a5cec26c654f7376df6659cdf84b99df9558"
+  integrity sha512-RowAaJGEgYXEZfQ7tvvdtAQUKPyTR6T6wNu0fwlNsGQYr/h3yQc6oI8WnVZh3Y/Sylwc+dtAlvPqfFZjhTyk3A==
 
 nyc@^11.3.0:
   version "11.3.0"
@@ -4678,6 +4687,11 @@ psl@^1.1.24:
   version "1.1.29"
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
 
+psl@^1.1.28:
+  version "1.1.31"
+  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
+  integrity sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==
+
 public-encrypt@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/public-encrypt/-/public-encrypt-4.0.0.tgz#39f699f3a46560dd5ebacbca693caf7c65c18cc6"
@@ -4699,6 +4713,11 @@ punycode@^1.2.4, punycode@^1.4.1:
 punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
+
+punycode@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
+  integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 q@^1.0.1, q@^1.1.2:
   version "1.5.1"
@@ -5170,9 +5189,10 @@ sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-saxes@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/saxes/-/saxes-3.1.3.tgz#334ab3b802a465ccda96fff9bdefbd505546ffa8"
+saxes@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/saxes/-/saxes-3.1.9.tgz#c1c197cd54956d88c09f960254b999e192d7058b"
+  integrity sha512-FZeKhJglhJHk7eWG5YM0z46VHmI3KJpMBAQm3xa9meDvd+wevB5GuBB0wc0exPInZiBBHqi00DbS8AcvCGCFMw==
   dependencies:
     xmlchars "^1.3.1"
 
@@ -5681,7 +5701,15 @@ tough-cookie@>=2.3.3, tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   dependencies:
     punycode "^1.4.1"
 
-tough-cookie@^2.4.3, tough-cookie@~2.4.3:
+tough-cookie@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
+  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
+  dependencies:
+    psl "^1.1.28"
+    punycode "^2.1.1"
+
+tough-cookie@~2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
   dependencies:
@@ -5897,6 +5925,15 @@ w3c-hr-time@^1.0.1:
   dependencies:
     browser-process-hrtime "^0.1.2"
 
+w3c-xmlserializer@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/w3c-xmlserializer/-/w3c-xmlserializer-1.1.2.tgz#30485ca7d70a6fd052420a3d12fd90e6339ce794"
+  integrity sha512-p10l/ayESzrBMYWRID6xbuCKh2Fp77+sA0doRuGn4tTIMrrZVeqfpKjXHY+oDh3K4nLdPgNwMTVP6Vp4pvqbNg==
+  dependencies:
+    domexception "^1.0.1"
+    webidl-conversions "^4.0.2"
+    xml-name-validator "^3.0.0"
+
 warp10@^1.0.0:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/warp10/-/warp10-1.3.6.tgz#edffff4f06382d2e469ba88ccfcb95bb81d3bda6"
@@ -5967,9 +6004,14 @@ whatwg-fetch@>=0.10.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
-whatwg-mimetype@^2.1.0, whatwg-mimetype@^2.2.0:
+whatwg-mimetype@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/whatwg-mimetype/-/whatwg-mimetype-2.2.0.tgz#a3d58ef10b76009b042d03e25591ece89b88d171"
+
+whatwg-mimetype@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/whatwg-mimetype/-/whatwg-mimetype-2.3.0.tgz#3d4b1e0312d2079879f826aff18dbeeca5960fbf"
+  integrity sha512-M4yMwr6mAnQz76TbJm914+gPpB/nCwvZbJU28cUD6dR004SAxDLOOSUaB1JDRqLtaOV/vi0IC5lEAGFgrjGv/g==
 
 whatwg-url@^7.0.0:
   version "7.0.0"
@@ -6072,9 +6114,10 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.0.tgz#119a9dbf92c54e190ec18d10e871d55c95cf9373"
+ws@^6.1.2:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
+  integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
     async-limiter "~1.0.0"
 
