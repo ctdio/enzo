@@ -35,7 +35,7 @@
     "nyc": "^11.3.0",
     "proxyquire": "^2.0.0",
     "snazzy": "^7.0.0",
-    "standard": "^11.0.0"
+    "standard": "^14.3.3"
   },
   "peerDependencies": {
     "marko": "^4.7.4"
